@@ -1,52 +1,39 @@
 <template>
-  <div>
-    <div>
-
+  <div class="relative w-full">
+    <div class="w-[1024px] bg-indigo-100 shadow-sm mx-auto mt-4 p-4 rounded-md">
       <div>
-        <span>Chọn cấp độ</span>
-        <select name="class-selection" id="class-selection" v-model=currentClass>
-          <option v-for="item, idx in classSelect" :key="idx" :value="item.value">{{ item.text }}</option>
-        </select>
+        <BaseOperator />
       </div>
-
       <div>
-        <span>Chọn độ khó</span>
-        <select name="dificulty-selection" id="dificulty-selection" v-model=currentDifficulty>
-          <option v-for="item, idx in difficultyLevel" :key="idx" :value="item.value">{{ item.text }}</option>
-        </select>
-      </div>
-
-    </div>
-    
-    <div>
-      <div>
-        <div v-for="item, idx in math" :key="idx">
-          <span>{{ `${item[0]} + ${ item[1]} = ` }} <input type="number" ></span>
-        </div>
+        <ModalExercise :showModal="isDisplay" :data="dataCreate" @selfClose="closeModal" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { ref } from 'vue';
-import { classSelect, difficultyLevel, exerciseType } from './data';
+import { ref } from 'vue'
+import ModalExercise from '@/components/modal/index.vue'
+import BaseOperator from '@/components/exercise-type/base-operator/index.vue'
+import CompareNums from '@/components/exercise-type/compare/index.vue'
 
 export default {
-  name: "App",
+  name: 'App',
 
-  setup(){
-
-    const currentClass = ref(classSelect[0].value)
-    const currentDifficulty = ref(difficultyLevel[0].value)
-    const math = exerciseType.sum.generateItem([0,1,2,3,4,5,6,7,8,9], 2)
+  components: {
+    ModalExercise,
+    BaseOperator,
+    CompareNums
+  },
+  setup() {
+    const dataCreate = ref([])
+    const isDisplay = ref(false)
+    const closeModal = () => {}
 
     return {
-      classSelect,
-      difficultyLevel,
-      currentClass,
-      currentDifficulty,
-      math
+      dataCreate,
+      isDisplay,
+      closeModal
     }
   }
 }

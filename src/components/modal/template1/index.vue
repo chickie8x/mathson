@@ -1,42 +1,46 @@
 <template>
-  <div class="h-screen w-full fixed top-0 left-0 flex items-center justify-center divide-x-2">
-    <div class="w-[1024px] bg-gray-300 h-full overflow-auto p-4 !text-gray-800">
-      <SumComponent :data="dataSetSum" :resultSet="sumResult" ref="sumComponent" />
+  <Transition name="fade">
+    <div
+      class="w-full flex justify-center divide-x-2"
+    >
+      <div class="w-[1024px] bg-gray-300 h-full overflow-auto p-4 !text-gray-800">
+        <SumComponent :data="dataSetSum" :resultSet="sumResult" ref="sumComponent" />
 
-      <CompareComponent :data="dataSetCompare" :resultSet="compareResult" ref="compComponent" />
+        <CompareComponent :data="dataSetCompare" :resultSet="compareResult" ref="compComponent" />
 
-      <SortComponent :data="dataSort" :resultSet="sortResult" ref="sortComponent" />
+        <SortComponent :data="dataSort" :resultSet="sortResult" ref="sortComponent" />
 
-      <SortComponent
-        :data="dataSortReverse"
-        :resultSet="sortReverseResult"
-        :sortType="'reverse'"
-        ref="sortReverseComponent"
-      />
-    </div>
-
-    <div class="w-[300px] bg-gray-400 h-full p-4">
-      <div class="flex items-center space-x-2">
-        <img src="@/assets/icons/user.svg" class="w-6 h-6" alt="user" />
-        <span> Ngô Đăng Nam</span>
-      </div>
-      <div class="flex items-center justify-start mt-4 space-x-2">
-        <Vue3Lottie
-          :animationData="sandclockJson"
-          :speed="0.1"
-          :noMargin="true"
-          width="40px"
-          height="40px"
+        <SortComponent
+          :data="dataSortReverse"
+          :resultSet="sortReverseResult"
+          :sortType="'reverse'"
+          ref="sortReverseComponent"
         />
-        <span class="text-2xl font-bold">{{ minutes }} : {{ seconds }}</span>
       </div>
-      <div class="mt-4">
-        <button @click="testEnd" class="px-4 py-1 rounded-sm shadow-sm bg-blue-500 text-white">
-          Xem kết quả
-        </button>
+
+      <div class="w-[300px] bg-gray-400 h-full p-4">
+        <div class="flex items-center space-x-2">
+          <img src="@/assets/icons/user.svg" class="w-6 h-6" alt="user" />
+          <span> Ngô Đăng Nam</span>
+        </div>
+        <div class="flex items-center justify-start mt-4 space-x-2">
+          <Vue3Lottie
+            :animationData="sandclockJson"
+            :speed="0.1"
+            :noMargin="true"
+            width="40px"
+            height="40px"
+          />
+          <span class="text-2xl font-bold">{{ minutes }} : {{ seconds }}</span>
+        </div>
+        <div class="mt-4">
+          <button @click="testEnd" class="px-4 py-1 rounded-sm shadow-sm bg-blue-500 text-white">
+            Xem kết quả
+          </button>
+        </div>
       </div>
     </div>
-  </div>
+  </Transition>
 </template>
 
 <script>

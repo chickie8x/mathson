@@ -5,7 +5,12 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx,vue}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'September': ['September'],
+        'Nunito': ['Nunito']
+      }
+    },
   },
   plugins: [],
 }

@@ -135,3 +135,66 @@ export const compareExp = (arr) => {
 
   return ret
 }
+
+export const language = [
+  {
+    id: 1,
+    text: 'Tiếng Việt',
+    icon: 'src/assets/icons/VN.svg',
+    value: 'vie'
+  },
+
+  {
+    id: 2,
+    text: 'English',
+    icon: 'src/assets/icons/UK.webp',
+    value: 'eng'
+  }
+]
+
+export const mathConfig = {
+  easy: {
+    id: 0,
+    text: 'Dễ',
+    value: 'easy',
+    config: {
+      numsOfElement: 2,
+      baseOperators: {
+        calculateRange: 5
+      },
+      sortOperators: {
+        sortLength: 3
+      }
+    }
+  },
+
+  medium: {
+    id: 0,
+    text: 'Trung bình',
+    value: 'medium',
+    config: {
+      numsOfElement: 2,
+      baseOperators: {
+        calculateRange: 5
+      },
+      sortOperators: {
+        sortLength: 3
+      }
+    }
+  },
+
+  hard: {
+    id: 0,
+    text: 'Khó',
+    value: 'hard',
+    config: {
+      numsOfElement: 2,
+      baseOperators: {
+        calculateRange: 5
+      },
+      sortOperators: {
+        sortLength: 3
+      }
+    }
+  }
+}

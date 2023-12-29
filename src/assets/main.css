@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: 'Nunito';
+    src: url('src/assets/fonts/Nunito-VariableFont_wght.ttf');
+  }
+
+  @font-face {
+    font-family: 'September';
+    src: url('src/assets/fonts/ADayinSeptember.otf');
+  }
+}

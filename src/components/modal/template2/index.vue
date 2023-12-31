@@ -1,32 +1,19 @@
 <template>
-  <div
-    class="fixed top-0 left-0 bg-gray-100 w-full h-screen flex items-center justify-center"
-    v-if="false"
-  >
+  <div class="w-full h-[calc(100%-64px)] flex items-center justify-center">
     <div class="flex flex-col items-center">
       <span
         class="text-2xl text-blue-500 mb-4 font-bold bg-white bg-opacity-50 backdrop-blur-md px-4 py-1 block w-fit rounded-md shadow-md"
-        >{{ flashcards.animals.title }}</span
+        >{{ flashcards[cardType].title }}</span
       >
       <div>
-        <Vue3Lottie
-          :animationData="backgroundAnimation"
-          :speed="0.3"
-          :noMargin="true"
-          width="100%"
-          height="100%"
-          class="fixed top-0 left-0 z-[-1] scale-150"
-        />
-        <div class="z-10 flex items-center justify-center">
-          <Vue3Lottie
-            :animationData="nextButton"
-            :noMargin="true"
-            width="160px"
-            height="160px"
-            class="scale-[-1] transform-[-1]"
-            role="button"
-            @click="moveBack"
-          />
+        <div class="flex items-center justify-center space-x-4">
+          <button @click="moveBack">
+            <img
+              src="/src/assets/icons/nextbtn.svg"
+              alt=""
+              class="w-24 h-24 scale-[-1] opacity-60"
+            />
+          </button>
           <div
             class="flex flex-col justify-center items-center rounded-md p-4 bg-white bg-opacity-60 backdrop-blur-md shadow-md select-none"
           >
@@ -65,14 +52,9 @@
               </div>
             </div>
           </div>
-          <Vue3Lottie
-            :animationData="nextButton"
-            :noMargin="true"
-            width="160px"
-            height="160px"
-            role="button"
-            @click="moveNext"
-          />
+          <button @click="moveNext">
+            <img src="/src/assets/icons/nextbtn.svg" alt="" class="w-24 h-24 opacity-60" />
+          </button>
         </div>
       </div>
     </div>
@@ -83,10 +65,9 @@
 import { flashcards } from './flashcard'
 import { computed, ref } from 'vue'
 import { Vue3Lottie } from 'vue3-lottie'
-import backgroundAnimation from '@/assets/lottiefiles/background.json'
-import nextButton from '@/assets/lottiefiles/next-button.json'
 import speaker from '@/assets/lottiefiles/speaker.json'
 import { language } from '@/data'
+import { useRoute } from 'vue-router'
 
 export default {
   name: 'AnimalFlashCard',
@@ -96,10 +77,12 @@ export default {
   },
 
   setup() {
+    const route = useRoute()
+    const cardType = route.params.param
     const currIndex = ref(0)
     const lang = ref(language[0])
     const card = computed(() => {
-      return flashcards.animals.items[currIndex.value]
+      return flashcards[cardType].items[currIndex.value]
     })
 
     const moveNext = () => {
@@ -140,13 +123,12 @@ export default {
       card,
       moveNext,
       moveBack,
-      backgroundAnimation,
-      nextButton,
       speaker,
       lang,
       language,
       doPlaySound,
-      flashcards
+      flashcards,
+      cardType
     }
   }
 }

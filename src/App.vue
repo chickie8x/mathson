@@ -1,7 +1,10 @@
 <template>
-  <div class="relative w-full h-screen bg-blue-50n" ref="container" :class="[disableScroll?'overflow-hidden':'overflow-auto']">
+  <div
+    class="relative w-full h-screen bg-blue-50"
+    :class="[disableScroll ? 'overflow-hidden' : 'overflow-auto']"
+  >
     <NavBar />
-    <router-view v-slot="{Component}">
+    <router-view v-slot="{ Component }">
       <transition name="fade">
         <component :is="Component" />
       </transition>
@@ -26,7 +29,6 @@ export default {
   },
   setup() {
     const route = useRoute()
-    const container = ref(null)
     const disableScroll = ref(false)
     const path = computed(() => {
       return route.path
@@ -40,7 +42,6 @@ export default {
 
     return {
       route,
-      container,
       disableScroll
     }
   }

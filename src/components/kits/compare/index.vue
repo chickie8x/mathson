@@ -8,13 +8,13 @@
         </span>
         hoặc <span class="font-bold text-blue-600"> =</span> vào ô trống
       </span>
-      <div class="grid grid-cols-5 row-auto gap-4 pl-8 mt-4">
+      <div class="grid grid-cols-4 row-auto gap-4 pl-8 mt-4">
         <div
           v-for="(item, idx) in data"
           :key="idx"
           class="space-x-2 flex items-center justify-start"
         >
-          <span class="w-12 flex justify-end">{{ item.strExp[0] }}</span>
+          <span class="w-24 flex justify-end">{{ item.strExp[0] }}</span>
           <input
             type="text"
             class="max-w-[32px] border border-blue-300 px-2 font-bold focus:outline-blue-300 hover:bg-blue-100 duration-300"
@@ -30,7 +30,7 @@
                 : ''
             ]"
           />
-          <span class="w-12">{{ item.strExp[1] }}</span>
+          <span class="w-24">{{ item.strExp[1] }}</span>
         </div>
       </div>
     </div>

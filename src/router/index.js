@@ -23,7 +23,7 @@ const router = createRouter({
     },
 
     {
-      path: '/practice/baseop/:difficulty',
+      path: '/practice/baseop/:param',
       name: 'baseop',
       component: () => import('@/components/modal/template1/index.vue'),
       meta: {
@@ -32,8 +32,8 @@ const router = createRouter({
     },
 
     {
-      path: '/practice/flashcard/:cardtype',
-      name: 'flascard',
+      path: '/practice/flashcard/:param',
+      name: 'flashcard',
       component: () => import('../components/modal/template2/index.vue'),
       meta: {
         transition: 'fade'

@@ -1,3 +1,5 @@
+import axios from 'axios'
+
 export const numSet = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 export const shuffleArray = (array) => {
@@ -140,20 +142,20 @@ export const language = [
   {
     id: 1,
     text: 'Tiếng Việt',
-    icon: 'src/assets/icons/VN.svg',
+    icon: '/src/assets/icons/VN.svg',
     value: 'vie'
   },
 
   {
     id: 2,
     text: 'English',
-    icon: 'src/assets/icons/UK.webp',
+    icon: '/src/assets/icons/UK.webp',
     value: 'eng'
   }
 ]
 
-export const mathConfig = {
-  easy: {
+export const mathConfig = [
+  {
     id: 0,
     text: 'Dễ',
     value: 'easy',
@@ -168,33 +170,45 @@ export const mathConfig = {
     }
   },
 
-  medium: {
-    id: 0,
+  {
+    id: 1,
     text: 'Trung bình',
     value: 'medium',
     config: {
-      numsOfElement: 2,
+      numsOfElement: 3,
       baseOperators: {
-        calculateRange: 5
+        calculateRange: 10
       },
       sortOperators: {
-        sortLength: 3
+        sortLength: 4
       }
     }
   },
 
-  hard: {
-    id: 0,
+  {
+    id: 2,
     text: 'Khó',
     value: 'hard',
     config: {
-      numsOfElement: 2,
+      numsOfElement: 4,
       baseOperators: {
-        calculateRange: 5
+        calculateRange: 10
       },
       sortOperators: {
-        sortLength: 3
+        sortLength: 5
       }
     }
   }
-}
+]
+
+export const flashcardConfig = [
+  {
+    text: 'Trái cây',
+    value: 'fruits'
+  },
+
+  {
+    text: 'Động vật',
+    value: 'animals'
+  }
+]

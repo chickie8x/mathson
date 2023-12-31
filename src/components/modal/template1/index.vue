@@ -1,8 +1,6 @@
 <template>
   <Transition name="fade">
-    <div
-      class="w-full flex justify-center divide-x-2"
-    >
+    <div class="w-full flex justify-center divide-x-2">
       <div class="w-[1024px] bg-gray-300 h-full overflow-auto p-4 !text-gray-800">
         <SumComponent :data="dataSetSum" :resultSet="sumResult" ref="sumComponent" />
 
@@ -62,31 +60,19 @@ import sandclockJson from '@/assets/lottiefiles/sandclock.json'
 import SumComponent from '@/components/kits/sum/index.vue'
 import CompareComponent from '@/components/kits/compare/index.vue'
 import SortComponent from '@/components/kits/sort/index.vue'
+import { useRoute } from 'vue-router'
+import { mathConfig } from '@/data/index'
 
 export default {
   name: 'ModalTemplate1',
-  props: {
-    config: {
-      type: Object,
-      require: true,
-      default: () => ({
-        numsOfElement: 2,
-        baseOperators: {
-          calculateRange: 5
-        },
-        sortOperators: {
-          sortLength: 3
-        }
-      })
-    }
-  },
+
   components: {
     Vue3Lottie,
     SumComponent,
     CompareComponent,
     SortComponent
   },
-  setup(props, { emit }) {
+  setup() {
     const compareNUms = ref([])
     const countdown = ref(1800)
     const dataSetSum = ref([])
@@ -104,6 +90,17 @@ export default {
     const sortComponent = ref(null)
     const sortReverseComponent = ref(null)
 
+    const route = useRoute()
+
+    const confMap = {
+      easy: 0,
+      medium: 1,
+      hard: 2
+    }
+
+    const conf = mathConfig[confMap[route.params.param]].config
+    console.log(conf)
+
     const minutes = computed(() => {
       return toMinnute(countdown.value)
     })
@@ -116,10 +113,8 @@ export default {
     }, 1000)
 
     const genSums = () => {
-      const genNums = generateNums(numSet, props.config.numsOfElement).filter((item) => {
-        return (
-          item.reduce((prev, curr) => prev + curr, 0) <= props.config.baseOperators.calculateRange
-        )
+      const genNums = generateNums(numSet, conf.numsOfElement).filter((item) => {
+        return item.reduce((prev, curr) => prev + curr, 0) <= conf.baseOperators.calculateRange
       })
 
       shuffleArray(genNums).map((item) => {
@@ -141,7 +136,7 @@ export default {
         }
       })
 
-      const genSort = generateNums(numSet, props.config.sortOperators.sortLength)
+      const genSort = generateNums(numSet, conf.sortOperators.sortLength)
       shuffleArray(genSort).map((item) => {
         if (dataSort.value.length < 5) {
           let obj = {}

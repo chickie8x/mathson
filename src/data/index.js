@@ -212,3 +212,35 @@ export const flashcardConfig = [
     value: 'animals'
   }
 ]
+
+export const generateMatrix = (targetNum) => {
+  let ret = []
+  let arr = [[], [], []]
+  const arrSize = 3
+  //create first row of matrix
+  while(arr[0].reduce((s, val) => s+val, 0) !== 8){
+    for(let i = 0; i<arrSize; i++){
+      arr[0][i] = Math.floor(Math.random()*10)
+    }
+  }
+
+  //create first colum of matrix
+  while([arr[0][0], arr[1][0], arr[2][0]].reduce((s, val) => s+val,0) !== 8){
+    for(let i = 1; i < arrSize; i++){
+      arr[i][0] = Math.floor(Math.random()*10)
+    }
+  }
+
+  for( let i = 0; i <= targetNum - arr[0][1]; i++){
+    let z = [[...arr[0]], [...arr[1]], [...arr[2]]]
+    z[1][1] = i
+    z[1][2] = targetNum - i - z[1][0]
+    z[2][1] = targetNum - i -z[0][1]
+    z[2][2] = targetNum - z[2][0] - z[2][1]
+    if(z[1][1] >=0 && z[1][2] >=0 && z[2][1] >=0 && z[2][2] >=0 ){
+      ret.push(z)
+    }
+  }
+
+  return ret
+}

@@ -1,7 +1,22 @@
 <template>
   <Transition name="fade">
-    <div class="w-full flex justify-center divide-x-2">
-      <div class="w-[1024px] bg-gray-300 h-full overflow-auto p-4 !text-gray-800">
+    <div class="w-full flex flex-col items-center relative">
+      
+      <div class="w-[1024px] sticky top-0 left-0 px-4 mt-4">
+        <div class="flex items-center justify-center bg-white space-x-2 shadow-md py-2">
+          <Vue3Lottie
+            :animationData="sandclockJson"
+            :speed="0.1"
+            :noMargin="true"
+            width="40px"
+            height="40px"
+          />
+          <span class="text-2xl font-bold">{{ minutes }} : {{ seconds }}</span>
+        </div>
+        
+      </div>
+
+      <div class="w-[1024px] p-4 !text-gray-800 space-y-8">
         <SumComponent :data="dataSetSum" :resultSet="sumResult" ref="sumComponent" />
 
         <CompareComponent :data="dataSetCompare" :resultSet="compareResult" ref="compComponent" />
@@ -14,29 +29,15 @@
           :sortType="'reverse'"
           ref="sortReverseComponent"
         />
-      </div>
 
-      <div class="w-[300px] bg-gray-400 h-full p-4">
-        <div class="flex items-center space-x-2">
-          <img src="@/assets/icons/user.svg" class="w-6 h-6" alt="user" />
-          <span> Ngô Đăng Nam</span>
-        </div>
-        <div class="flex items-center justify-start mt-4 space-x-2">
-          <Vue3Lottie
-            :animationData="sandclockJson"
-            :speed="0.1"
-            :noMargin="true"
-            width="40px"
-            height="40px"
-          />
-          <span class="text-2xl font-bold">{{ minutes }} : {{ seconds }}</span>
-        </div>
         <div class="mt-4">
           <button @click="testEnd" class="px-4 py-1 rounded-sm shadow-sm bg-blue-500 text-white">
             Xem kết quả
           </button>
         </div>
       </div>
+
+      
     </div>
   </Transition>
 </template>
@@ -109,7 +110,9 @@ export default {
     })
 
     setInterval(() => {
-      countdown.value -= 1
+      if(countdown.value > 0){
+        countdown.value -= 1
+      }
     }, 1000)
 
     const genSums = () => {

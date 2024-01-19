@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div class="mt-8">
+    <div class="mt-8 bg-white bg-opacity-80 rounded-md shadow-md p-4">
       <span class="text-xl"
-        ><span class="font-bold text-blue-700">Bài 2:</span> Điền dấu
+        ><span class="font-bold text-blue-700">Yêu cầu: </span> Điền dấu
         <span class="font-bold text-blue-600">> </span>,<span class="font-bold text-blue-600"
           >&lt;
         </span>

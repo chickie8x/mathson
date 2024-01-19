@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div class="mt-4">
+    <div class="mt-4 bg-white bg-opacity-80 rounded-md shadow-md p-4">
       <span class="text-xl"
-        ><span class="font-bold text-blue-700">Bài 1:</span> Hoàn thành các phép tính sau
+        ><span class="font-bold text-blue-700">Yêu cầu:</span> Hoàn thành các phép tính sau
       </span>
       <div class="grid grid-cols-5 row-auto mt-2 gap-4 pl-8">
         <div v-for="(item, idx) in data" :key="idx" class="flex items-center space-x-2">

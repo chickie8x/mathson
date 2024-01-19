@@ -56,6 +56,15 @@ const router = createRouter({
       meta: {
         transition: 'fade'
       }
+    },
+
+    {
+      path: '/logic',
+      name: 'logic',
+      component: () => import('../views/FeedbackView/index.vue'),
+      meta: {
+        transition: 'fade'
+      }
     }
   ]
 })

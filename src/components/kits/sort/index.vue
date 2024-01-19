@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div class="mt-8">
+    <div class="mt-8 bg-white bg-opacity-80 rounded-md shadow-md p-4">
       <span class="text-xl"
-        ><span class="font-bold text-blue-700">Bài 3: </span> Sắp xếp các dãy số sau theo thứ tự
+        ><span class="font-bold text-blue-700">Yêu cầu: </span> Sắp xếp các dãy số sau theo thứ tự
         {{ sortType === 'increase' ? 'tăng' : 'giảm' }} dần</span
       >
       <div class="mt-4 pl-8 grid grid-cols-2 row-auto">

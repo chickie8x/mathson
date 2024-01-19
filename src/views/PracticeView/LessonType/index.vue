@@ -6,7 +6,7 @@
       width="160px"
       height="160px"
       role="button"
-      :speed="0.4"
+      :speed="0.7"
       class="border border-gray-300 rounded-md shadow-sm"
     />
 
@@ -33,7 +33,8 @@
 
       <button
         @click="startLesson"
-        class="px-4 py-1 bg-blue-600 hover:bg-blue-500 text-center rounded-md text-white shadow-md disabled:bg-gray-200 disabled:text-gray-800 duration-300"
+        :disabled="tag === 'coming soon'"
+        class="px-4 py-1 bg-blue-600 hover:bg-blue-500 text-center rounded-md text-white shadow-md disabled:bg-gray-200 disabled:text-gray-500 duration-300"
       >
         Bắt đầu
       </button>

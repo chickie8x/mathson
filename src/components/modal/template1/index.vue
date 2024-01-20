@@ -1,7 +1,6 @@
 <template>
   <Transition name="fade">
     <div class="w-full flex flex-col items-center relative">
-      
       <div class="w-[1024px] sticky top-0 left-0 px-4 mt-4">
         <div class="flex items-center justify-center bg-white space-x-2 shadow-md py-2">
           <Vue3Lottie
@@ -13,7 +12,6 @@
           />
           <span class="text-2xl font-bold">{{ minutes }} : {{ seconds }}</span>
         </div>
-        
       </div>
 
       <div class="w-[1024px] p-4 !text-gray-800 space-y-8">
@@ -36,8 +34,6 @@
           </button>
         </div>
       </div>
-
-      
     </div>
   </Transition>
 </template>
@@ -110,7 +106,7 @@ export default {
     })
 
     setInterval(() => {
-      if(countdown.value > 0){
+      if (countdown.value > 0) {
         countdown.value -= 1
       }
     }, 1000)

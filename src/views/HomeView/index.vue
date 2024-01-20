@@ -47,33 +47,46 @@
 
     <div class="flex flex-row-reverse justify-between px-4 py-12 w-[1156px] mx-auto">
       <Vue3Lottie
-          :animationData="homeSection2"
-          :noMargin="true"
-          width="400px"
-          height="400px"
-          role="button"
-          :speed="0.7"
-        />
+        :animationData="homeSection2"
+        :noMargin="true"
+        width="400px"
+        height="400px"
+        role="button"
+        :speed="0.7"
+      />
 
-        <div class="flex-1">
-          <span class="font-Nunito text-3xl font-bold text-gray-600 block text-center px-24">
-            Đăng ký tài khoản
+      <div class="flex-1">
+        <span class="font-Nunito text-3xl font-bold text-gray-600 block text-center px-24">
+          Đăng ký tài khoản
+        </span>
+
+        <div class="text-gray-500 mt-6 px-24 flex flex-col">
+          <span class="block mt-2"
+            >Bạn hoàn toàn có thể dùng các chức năng của trang web hoàn toàn miễn phí mà không cần
+            phải đăng ký tài khoản hay đăng nhập</span
+          >
+          <span class="block mt-2"
+            >Nhưng việc đăng ký một tài khoản sẽ giúp bạn theo dõi đc biểu đồ tiến bộ , biểu đồ
+            chuyên cần theo thời gian khi luyện tập trên trang web</span
+          >
+          <span class="block mt-2">
+            Đồng thời bạn sẽ thu thập được các huy hiệu cho từng giai đoạn hay thành tích đạt được
+            khi luyện tập trên trang web
           </span>
-
-          <div class="text-gray-500 mt-6 px-24 flex flex-col">
-            <span class="block mt-2">Bạn hoàn toàn có thể dùng các chức năng của trang web hoàn toàn miễn phí mà không cần phải đăng ký tài khoản hay đăng nhập</span>
-            <span class="block mt-2">Nhưng việc đăng ký một tài khoản sẽ giúp bạn theo dõi đc biểu đồ tiến bộ , biểu đồ chuyên cần theo thời gian khi luyện tập trên trang web</span>
-            <span class="block mt-2">
-              Đồng thời bạn sẽ thu thập được các huy hiệu cho từng giai đoạn hay thành tích đạt được khi luyện tập trên trang web
-            </span>
-            <span class="block mt-2">Nếu bạn đạt thành tích cao thì danh tính của bạn sẽ được hiển thị trên bảng xếp hạng hiển thị trên trang web</span>
-          </div>
-          <div class="flex justify-center mt-4">
-            <button class="mt-4 rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">Đăng ký tài khoản</button>
-          </div>
+          <span class="block mt-2"
+            >Nếu bạn đạt thành tích cao thì danh tính của bạn sẽ được hiển thị trên bảng xếp hạng
+            hiển thị trên trang web</span
+          >
         </div>
+        <div class="flex justify-center mt-4">
+          <button
+            class="mt-4 rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+          >
+            Đăng ký tài khoản
+          </button>
+        </div>
+      </div>
     </div>
-    
   </div>
 </template>
 

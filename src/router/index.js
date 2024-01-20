@@ -59,9 +59,9 @@ const router = createRouter({
     },
 
     {
-      path: '/logic',
+      path: '/practice/logic',
       name: 'logic',
-      component: () => import('../views/FeedbackView/index.vue'),
+      component: () => import('../components/modal/template3/index.vue'),
       meta: {
         transition: 'fade'
       }

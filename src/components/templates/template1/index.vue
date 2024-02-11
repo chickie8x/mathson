@@ -54,7 +54,7 @@ import {
 } from '@/data'
 import { Vue3Lottie } from 'vue3-lottie'
 import sandclockJson from '@/assets/lottiefiles/sandclock.json'
-// import SumComponent from '@/components/kits/sum/index.vue'
+import SumComponent from '@/components/kits/sum/index.vue'
 import CompareComponent from '@/components/kits/compare/index.vue'
 import SortComponent from '@/components/kits/sort/index.vue'
 import { useRoute } from 'vue-router'
@@ -65,19 +65,17 @@ export default {
 
   components: {
     Vue3Lottie,
-    // SumComponent,
+    SumComponent,
     CompareComponent,
     SortComponent
   },
   setup() {
     const compareNUms = ref([])
     const countdown = ref(1800)
-    const dataSetSum = ref([])
     const dataSetCompare = ref([])
     const dataSort = ref([])
     const dataSortReverse = ref([])
 
-    const sumResult = ref([])
     const compareResult = ref([])
     const sortResult = ref([])
     const sortReverseResult = ref([])
@@ -96,7 +94,6 @@ export default {
     }
 
     const conf = mathConfig[confMap[route.params.param]].config
-    console.log(conf)
 
     const minutes = computed(() => {
       return toMinnute(countdown.value)

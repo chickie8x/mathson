@@ -25,7 +25,7 @@ const router = createRouter({
     {
       path: '/practice/baseop/:param',
       name: 'baseop',
-      component: () => import('@/components/modal/template1/index.vue'),
+      component: () => import('@/components/templates/base-operators/index.vue'),
       meta: {
         transition: 'fade'
       }

@@ -18,8 +18,8 @@
         ô trống</span
       >
       <div class="mt-4 grid grid-cols-2 gap-y-8">
-        <div v-for="item, idx in numListArray" :key="idx">
-          <ComponentFill :data="item"/>
+        <div v-for="(item, idx) in numListArray" :key="idx">
+          <ComponentFill :data="item" />
         </div>
       </div>
     </div>

@@ -16,18 +16,6 @@
 
       <div class="w-[1024px] p-4 !text-gray-800 space-y-8">
         <SumComponent :data="dataSetSum" :resultSet="sumResult" ref="sumComponent" />
-
-        <CompareComponent :data="dataSetCompare" :resultSet="compareResult" ref="compComponent" />
-
-        <SortComponent :data="dataSort" :resultSet="sortResult" ref="sortComponent" />
-
-        <SortComponent
-          :data="dataSortReverse"
-          :resultSet="sortReverseResult"
-          :sortType="'reverse'"
-          ref="sortReverseComponent"
-        />
-
         <div class="mt-4">
           <button @click="testEnd" class="px-4 py-1 rounded-sm shadow-sm bg-blue-500 text-white">
             Xem kết quả
@@ -54,9 +42,6 @@ import {
 } from '@/data'
 import { Vue3Lottie } from 'vue3-lottie'
 import sandclockJson from '@/assets/lottiefiles/sandclock.json'
-// import SumComponent from '@/components/kits/sum/index.vue'
-import CompareComponent from '@/components/kits/compare/index.vue'
-import SortComponent from '@/components/kits/sort/index.vue'
 import { useRoute } from 'vue-router'
 import { mathConfig } from '@/data/index'
 
@@ -64,10 +49,7 @@ export default {
   name: 'ModalTemplate1',
 
   components: {
-    Vue3Lottie,
-    // SumComponent,
-    CompareComponent,
-    SortComponent
+    Vue3Lottie
   },
   setup() {
     const compareNUms = ref([])

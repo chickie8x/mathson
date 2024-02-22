@@ -218,14 +218,14 @@ export const generateMatrix = (targetNum) => {
   let arr = [[], [], []]
   const arrSize = 3
   //create first row of matrix
-  while (arr[0].reduce((s, val) => s + val, 0) !== 8) {
+  while (arr[0].reduce((s, val) => s + val, 0) !== targetNum) {
     for (let i = 0; i < arrSize; i++) {
       arr[0][i] = Math.floor(Math.random() * 10)
     }
   }
 
   //create first colum of matrix
-  while ([arr[0][0], arr[1][0], arr[2][0]].reduce((s, val) => s + val, 0) !== 8) {
+  while ([arr[0][0], arr[1][0], arr[2][0]].reduce((s, val) => s + val, 0) !== targetNum) {
     for (let i = 1; i < arrSize; i++) {
       arr[i][0] = Math.floor(Math.random() * 10)
     }

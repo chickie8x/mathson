@@ -6,7 +6,7 @@
     >
     <div class="grid grid-cols-4 gap-8 mt-4 pl-8">
       <div v-for="(item, idx) in matrix" :key="idx">
-        <MatrixUnit :matrix="item" :sum="n"/>
+        <MatrixUnit :matrix="item" :sum="n" />
       </div>
     </div>
   </div>
@@ -39,7 +39,7 @@ export default {
 
     return {
       matrix,
-      n,
+      n
     }
   }
 }

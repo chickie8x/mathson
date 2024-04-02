@@ -1,7 +1,5 @@
 <template>
-  <div class="grid grid-cols-4 row-auto gap-12">
-    
-  </div>
+  <div class="grid grid-cols-4 row-auto gap-12"></div>
 </template>
 
 <script>
@@ -15,9 +13,7 @@ export default {
   },
 
   setup() {
-
-    return {
-    }
+    return {}
   }
 }
 </script>

@@ -1,5 +1,3 @@
-import axios from 'axios'
-
 export const numSet = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 export const shuffleArray = (array) => {
@@ -10,19 +8,27 @@ export const shuffleArray = (array) => {
   return array
 }
 
-export const opSum = (arr) => {
+export const opSum = (arr, op) => {
   let ret = {}
   let exp = ''
 
   for (let i = 0; i < arr.length; i++) {
     if (i != arr.length - 1) {
-      exp += arr[i] + ' + '
+      if (op === 'sum') {
+        exp += arr[i] + ' + '
+      } else {
+        exp += arr[i] + ' - '
+      }
     } else {
       exp += arr[i] + ' = '
     }
   }
   ret.strShow = exp
-  ret.result = arr.reduce((prevValue, currValue) => prevValue + currValue, 0)
+  if (op === 'sum') {
+    ret.result = arr.reduce((prevValue, currValue) => prevValue + currValue, 0)
+  } else {
+    ret.result = arr.reduce((prevValue, currValue) => prevValue - currValue)
+  }
   return ret
 }
 
@@ -239,6 +245,59 @@ export const generateMatrix = (targetNum) => {
     z[2][2] = targetNum - z[2][0] - z[2][1]
     if (z[1][1] >= 0 && z[1][2] >= 0 && z[2][1] >= 0 && z[2][2] >= 0) {
       ret.push(z)
+    }
+  }
+
+  return ret
+}
+
+export const checkExistArr = (arr2D, arr) => {
+  if (arr2D.length === 0) {
+    return false
+  } else {
+    for (let i = 0; i < arr2D.length; i++) {
+      if (arr2D[i].toString() === arr.toString()) {
+        return true
+      }
+    }
+  }
+  return false
+}
+
+export const tenSumOpGen = (n, conf) => {
+  let ret = []
+  if (conf === 'easy') {
+    while (ret.length <= n) {
+      let num1 = Math.floor(Math.random() * 10)
+      let num2 = Math.floor(Math.random() * 10)
+      if (num1 + num2 >= 10 && !checkExistArr(ret, [num1, num2])) {
+        ret.push([num1, num2])
+      }
+    }
+  } else if (conf === 'medium') {
+    while (ret.length <= n) {
+      let num1 = Math.floor(Math.random() * 99)
+      let num2 = Math.floor(Math.random() * 99)
+      if (
+        num1 + num2 < 100 &&
+        !checkExistArr(ret, [num1, num2]) &&
+        (num1 % 10) + (num2 % 10) < 10 &&
+        Math.floor(num1 / 10) + Math.floor(num2 / 10) < 10
+      ) {
+        ret.push([num1, num2])
+      }
+    }
+  } else {
+    while (ret.length <= n) {
+      let num1 = Math.floor(Math.random() * 99)
+      let num2 = Math.floor(Math.random() * 99)
+      if (
+        num1 + num2 < 100 &&
+        !checkExistArr(ret, [num1, num2]) &&
+        Math.floor(num1 / 10) + Math.floor(num2 / 10) < 10
+      ) {
+        ret.push([num1, num2])
+      }
     }
   }
 

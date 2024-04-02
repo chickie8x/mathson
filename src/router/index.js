@@ -34,7 +34,7 @@ const router = createRouter({
     {
       path: '/practice/flashcard/:param',
       name: 'flashcard',
-      component: () => import('../components/modal/template2/index.vue'),
+      component: () => import('../components/templates/template2/index.vue'),
       meta: {
         transition: 'fade'
       }

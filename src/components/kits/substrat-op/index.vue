@@ -5,18 +5,18 @@
         ><span class="font-bold text-blue-700">Yêu cầu:</span> Hoàn thành các phép tính sau
       </span>
       <div class="grid grid-cols-5 row-auto mt-2 gap-4 pl-8">
-        <div v-for="(item, idx) in dataSetSum" :key="idx" class="flex items-center space-x-2">
+        <div v-for="(item, idx) in dataSetSub" :key="idx" class="flex items-center space-x-2">
           <span class="select-none">{{ item.strShow }}</span>
           <input
             type="number"
-            v-model="sumResult[idx]"
+            v-model="subResult[idx]"
             class="[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none border border-blue-300 rounded-sm max-w-[40px] outline-blue-500 px-2 hover:bg-blue-100 duration-300"
             :disabled="isCheckResult"
             :class="[
-              isCheckResult && sumResult[idx] === item.result
+              isCheckResult && subResult[idx] === item.result
                 ? 'bg-green-300 text-green-600 border border-green-600'
                 : '',
-              isCheckResult && sumResult[idx] !== item.result
+              isCheckResult && subResult[idx] !== item.result
                 ? 'bg-red-300 text-red-600 border border-red-600'
                 : ''
             ]"
@@ -28,16 +28,16 @@
 </template>
 
 <script>
-import { mathConfig, numSet, generateNums, shuffleArray, opSum } from '@/data/index'
+import { inject, onMounted, ref, watchEffect } from 'vue'
 import { useRoute } from 'vue-router'
-import { onMounted, ref, inject, watchEffect } from 'vue'
+import { numSet, generateNums, shuffleArray, mathConfig, opSum } from '@/data'
 
 export default {
-  name: 'SumOperator',
+  name: 'SubstractOperator',
 
   setup() {
-    const dataSetSum = ref([])
-    const sumResult = ref([])
+    const dataSetSub = ref([])
+    const subResult = ref([])
     const route = useRoute()
     const triggerListener = inject('trigger')
     const isCheckResult = ref(false)
@@ -46,18 +46,16 @@ export default {
       medium: 1,
       hard: 2
     }
-
     const conf = mathConfig[confMap[route.params.param]].config
-
     const dataGenerate = () => {
       const genNums = generateNums(numSet, conf.numsOfElement).filter((item) => {
-        return item.reduce((prev, curr) => prev + curr, 0) <= conf.baseOperators.calculateRange
+        return item.reduce((prev, curr) => prev - curr) >= 0
       })
 
       shuffleArray(genNums).map((item) => {
-        if (dataSetSum.value.length < 25) {
-          dataSetSum.value.push(opSum(item, 'sum'))
-          sumResult.value.push(null)
+        if (dataSetSub.value.length < 25) {
+          dataSetSub.value.push(opSum(item, 'sub'))
+          subResult.value.push(null)
         } else {
           return
         }
@@ -75,8 +73,8 @@ export default {
     })
 
     return {
-      dataSetSum,
-      sumResult,
+      dataSetSub,
+      subResult,
       isCheckResult
     }
   }

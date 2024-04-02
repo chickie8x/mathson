@@ -9,7 +9,7 @@
 
     <div v-else>
       <div v-for="(item, idx) in exercisesList" :key="idx">
-        <component :is="item"/>
+        <component :is="item" />
       </div>
       <div class="w-full mt-8 p-4 flex justify-center">
         <button @click="trigger" class="px-4 py-1 bg-blue-500 text-white rounded-md">CHECK</button>
@@ -31,7 +31,7 @@ export default {
     LoadingIcon
   },
 
-  setup(_, {emit}) {
+  setup(_, { emit }) {
     const isLoadingComponent = ref(true)
     const exercisesList = shallowRef([])
     const isTrigger = ref(false)

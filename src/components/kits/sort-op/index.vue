@@ -105,7 +105,7 @@ export default {
     const triggerListener = inject('trigger')
 
     watchEffect(() => {
-      if(triggerListener.value){
+      if (triggerListener.value) {
         isCheckResult.value = true
       }
     })
@@ -114,7 +114,7 @@ export default {
       isCheckResult,
       dataSort,
       sortResult,
-      sortType,
+      sortType
     }
   }
 }

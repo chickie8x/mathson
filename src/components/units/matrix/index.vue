@@ -7,7 +7,7 @@
         isCheckResult && !result ? 'border-2 border-red-500 bg-red-200 text-red-800' : ''
       ]"
     >
-      <div v-for="(item, idx) in incompleteMatrix" :key="idx" class="w-36 flex">
+      <div v-for="(item, idx) in incompleteMatrix" :key="idx" class="w-36 flex text-gray-700">
         <div v-for="(jtem, jdx) in item" :key="jdx" class="w-36 h-12 flex">
           <div
             class="w-12 h-12 flex items-center justify-center border border-blue-200 border-collapse"

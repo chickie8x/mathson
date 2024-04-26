@@ -1,11 +1,11 @@
 <template>
   <div>
     <div class="mt-8 bg-white bg-opacity-80 rounded-md shadow-md p-4">
-      <span class="text-xl"
+      <span class="font-semibold"
         ><span class="font-bold text-blue-700">Yêu cầu: </span> Sắp xếp các dãy số sau theo thứ tự
         {{ sortType === 'increase' ? 'tăng' : 'giảm' }} dần</span
       >
-      <div class="mt-4 pl-8 grid grid-cols-2 row-auto">
+      <div class="mt-4 pl-8 grid grid-cols-2 row-auto text-gray-700">
         <div
           v-for="(item, idx) in dataSort"
           :key="idx"
@@ -50,6 +50,11 @@ import { inject, onMounted, ref, watchEffect } from 'vue'
 
 export default {
   name: 'SortOperator',
+
+  desc: {
+    name: 'Sắp xếp dãy số',
+    detail: 'Sắp xếp dãy số theo thứ tự từ nhỏ đến lớn hoặc ngược lại'
+  },
 
   setup() {
     const isCheckResult = ref(false)

@@ -1,10 +1,10 @@
 <template>
   <div class="mt-4 bg-white bg-opacity-80 rounded-md shadow-md p-4">
-    <span class="text-xl"
+    <span class="font-semibold"
       ><span class="font-bold text-blue-700">Yêu cầu:</span> Điền số thích hợp vào ô trống
     </span>
     <div class="mt-2 pl-8">
-      <div v-for="(item, idx) in dataSet" :key="idx" class="mt-6">
+      <div v-for="(item, idx) in dataSet" :key="idx" class="mt-6 text-gray-700">
         <input
           type="number"
           v-for="(jtem, jdx) in item.arrShow"
@@ -33,6 +33,11 @@ import { inject, ref, watchEffect } from 'vue'
 
 export default {
   name: 'FillNumsOperator',
+
+  desc: {
+    name: 'Điền số đúng',
+    detail: 'Điền số thích hợp vào các ô trống trong dãy số'
+  },
 
   setup() {
     const isCheckResult = ref(false)

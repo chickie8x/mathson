@@ -33,7 +33,7 @@
 
       <button
         @click="startLesson"
-        :disabled="tag === 'coming soon'"
+        :disabled="tag !== 'active'"
         class="px-4 py-1 bg-blue-600 hover:bg-blue-500 text-center rounded-md text-white shadow-md disabled:bg-gray-200 disabled:text-gray-500 duration-300"
       >
         Bắt đầu

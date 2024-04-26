@@ -65,6 +65,15 @@ const router = createRouter({
       meta: {
         transition: 'fade'
       }
+    },
+
+    {
+      path: '/practice/baseop/:param/choices/:choices',
+      name: 'choices',
+      component: () => import('../components/templates/selected-operators/index.vue'),
+      meta: {
+        transition: 'fade'
+      }
     }
   ]
 })

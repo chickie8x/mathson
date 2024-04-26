@@ -1,14 +1,14 @@
 <template>
   <div>
     <div class="mt-8 bg-white bg-opacity-80 rounded-md shadow-md p-4">
-      <span class="text-xl"
+      <span class="font-semibold"
         ><span class="font-bold text-blue-700">Yêu cầu: </span> Điền dấu
         <span class="font-bold text-blue-600">> </span>,<span class="font-bold text-blue-600"
           >&lt;
         </span>
         hoặc <span class="font-bold text-blue-600"> =</span> vào ô trống
       </span>
-      <div class="grid grid-cols-4 row-auto gap-4 pl-8 mt-4">
+      <div class="grid grid-cols-4 gap-10 pl-4 mt-4 text-gray-700">
         <div
           v-for="(item, idx) in dataSetCompare"
           :key="idx"
@@ -44,6 +44,10 @@ import { mathConfig, generateNums, numSet, shuffleArray, genCompareSet, compareE
 
 export default {
   name: 'CompareOperator',
+  desc: {
+    name: 'Phép so sánh',
+    detail: 'So sánh trong phạm vi 10'
+  },
 
   setup() {
     const dataSetCompare = ref([])

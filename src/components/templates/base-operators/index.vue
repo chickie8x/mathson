@@ -7,8 +7,8 @@
       </div>
     </div>
 
-    <div v-else>
-      <div v-for="(item, idx) in exercisesList" :key="idx">
+    <div v-else v-once class="max-w-6xl">
+      <div v-for="(item, idx) in exercisesList.sort()" :key="idx">
         <component :is="item" />
       </div>
       <div class="w-full mt-8 p-4 flex justify-center">
@@ -66,7 +66,6 @@ export default {
       isLoadingComponent,
       LoadingIcon,
       exercisesList,
-      randomList,
       isTrigger,
       trigger
     }

@@ -1,19 +1,9 @@
 <template>
-  <div class="grid grid-cols-4 row-auto gap-12"></div>
+  <div></div>
 </template>
 
 <script>
-import { generateMatrix } from '@/data/index'
-
 export default {
-  name: 'RankingView',
-
-  components: {
-    MatrixComponent
-  },
-
-  setup() {
-    return {}
-  }
+  name: 'RankingView'
 }
 </script>

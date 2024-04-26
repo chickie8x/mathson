@@ -1,10 +1,11 @@
 <template>
   <div>
     <div class="mt-4 bg-white bg-opacity-80 rounded-md shadow-md p-4">
-      <span class="text-xl"
-        ><span class="font-bold text-blue-700">Yêu cầu:</span> Hoàn thành các phép tính sau
+      <span class="font-semibold"
+        ><span class="font-bold text-blue-700">Yêu cầu:</span> Hoàn thành các phép tính sau (Phạm vi
+        10)
       </span>
-      <div class="grid grid-cols-5 row-auto mt-2 gap-4 pl-8">
+      <div class="grid grid-cols-4 gap-10 mt-4 pl-4 text-gray-700">
         <div v-for="(item, idx) in dataSetSub" :key="idx" class="flex items-center space-x-2">
           <span class="select-none">{{ item.strShow }}</span>
           <input
@@ -34,6 +35,11 @@ import { numSet, generateNums, shuffleArray, mathConfig, opSum } from '@/data'
 
 export default {
   name: 'SubstractOperator',
+
+  desc: {
+    name: 'Phép trừ ',
+    detail: 'Thực hiện các phép trừ trong phạm vi 10'
+  },
 
   setup() {
     const dataSetSub = ref([])

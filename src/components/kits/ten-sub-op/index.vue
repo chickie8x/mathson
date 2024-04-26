@@ -3,9 +3,9 @@
     <span class="font-semibold"
       ><span class="font-bold text-blue-700">Yêu cầu:</span> Hoàn thành các phép tính sau
     </span>
-    <div v-if="conf === 'easy'" class="grid grid-cols-4 mt-2 gap-10 pl-8 text-gray-700">
+    <div v-if="conf === 'easy'" class="grid grid-cols-4 gap-10 mt-2 pl-4 text-gray-700">
       <div v-for="(item, idx) in dataSet" :key="idx" class="">
-        <span> {{ item[0] }} + {{ item[1] }} = </span>
+        <span> {{ item[0] }} - {{ item[1] }} = </span>
         <input
           v-model="bindNull[idx]"
           :disabled="isCheckResult"
@@ -23,10 +23,10 @@
       </div>
     </div>
 
-    <div v-else class="grid grid-cols-4 gap-10 mt-4 pl-8">
+    <div v-else class="flex flex-wrap gap-x-32 gap-y-4 mt-2 pl-4">
       <div v-for="(item, idx) in dataSet" :key="idx" class="flex flex-col relative">
         <span class="w-8 flex justify-end px-1">{{ item[0] }}</span>
-        <span class="absolute top-3 -left-1">+</span>
+        <span class="absolute top-3 -left-1">-</span>
         <span class="w-8 flex justify-end px-1 border-b border-gray-800">{{ item[1] }}</span>
         <input
           v-model="bindNull[idx]"
@@ -49,14 +49,14 @@
 <script>
 import { useRoute } from 'vue-router'
 import { ref, onMounted, inject, watchEffect } from 'vue'
-import { tenSumOpGen } from '@/data'
+import { tenSubOpGen } from '@/data'
 
 export default {
-  name: 'TensSumOp',
+  name: 'TensSubOp',
 
   desc: {
-    name: 'Phép cộng',
-    detail: 'Thực hiện các phép cộng trong phạm vi 10-100'
+    name: 'Phép trừ',
+    detail: 'Thực hiện các phép trừ trong phạm vi 10 - 100'
   },
 
   setup() {
@@ -73,11 +73,11 @@ export default {
       }
     })
     const genData = () => {
-      const data = tenSumOpGen(14, conf)
+      const data = tenSubOpGen(14, conf)
       dataSet.value = data
       resultSet.value = data.map((item) => {
         bindNull.value.push(null)
-        return item.reduce((prev, curr) => prev + curr, 0)
+        return item.reduce((prev, curr) => prev - curr)
       })
     }
 

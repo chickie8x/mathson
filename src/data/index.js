@@ -303,3 +303,34 @@ export const tenSumOpGen = (n, conf) => {
 
   return ret
 }
+
+export const tenSubOpGen = (n, conf) => {
+  let ret = []
+  if (conf === 'easy') {
+    while (ret.length <= n) {
+      let num1 = Math.floor(Math.random() * 20)
+      let num2 = Math.floor(Math.random() * 20)
+      if (num1 > 10 && num1 - num2 >= 0 && !checkExistArr(ret, [num1, num2])) {
+        ret.push([num1, num2])
+      }
+    }
+  } else if (conf === 'medium') {
+    while (ret.length <= n) {
+      let num1 = Math.floor(Math.random() * 99)
+      let num2 = Math.floor(Math.random() * 99)
+      if (num1 - num2 > 0 && !checkExistArr(ret, [num1, num2]) && (num1 % 10) - (num2 % 10) > 0) {
+        ret.push([num1, num2])
+      }
+    }
+  } else {
+    while (ret.length <= n) {
+      let num1 = Math.floor(Math.random() * 99)
+      let num2 = Math.floor(Math.random() * 99)
+      if (num1 - num2 > 10 && !checkExistArr(ret, [num1, num2])) {
+        ret.push([num1, num2])
+      }
+    }
+  }
+
+  return ret
+}

@@ -26,7 +26,7 @@ export const lessonType = [
     pathName: 'logic',
     animation: comingSoon,
     sectionTitle: 'Tư duy logic',
-    tag: 'active',
+    tag: 'coming soon',
     difficulty: false
   }
 ]

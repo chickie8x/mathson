@@ -5,23 +5,28 @@
     </span>
     <div class="mt-2 pl-8">
       <div v-for="(item, idx) in dataSet" :key="idx" class="mt-6 text-gray-700">
-        <input
-          type="number"
-          v-for="(jtem, jdx) in item.arrShow"
-          :key="jdx"
-          v-model="item.arrShow[jdx]"
-          :disabled="item.shadowArr[jdx] !== null"
-          class="m-2 w-8 h-8 border border-blue-300 outline-none text-center bg-white duration-300 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
-          :class="[
-            isCheckResult && item.arrShow[jdx] === item.arr[jdx] && item.shadowArr[jdx] === null
-              ? '!bg-green-300 text-green-600 border border-green-600'
-              : '',
-            isCheckResult && item.arrShow[jdx] !== item.arr[jdx] && item.shadowArr[jdx] === null
-              ? '!bg-red-300 text-red-600 border border-red-600'
-              : '',
-            item.shadowArr[jdx] !== null ? '!bg-blue-100' : ''
-          ]"
-        />
+          <div class="flex items-center space-x-8">
+            <div v-for="(jtem, jdx) in item.arrShow" :key="jdx">
+              <span v-if="item.arrShow[jdx]" class="flex items-center justify-center w-8 h-8 border border-blue-300 bg-blue-100">{{ item.arrShow[jdx] }}</span>
+              <input
+              v-else
+              type="number"
+              v-model="item.arrShow[jdx]"
+              :disabled="isCheckResult"
+              class="m-2 w-8 h-8 border border-blue-300 outline-none text-center bg-white duration-300 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+              :class="[
+                isCheckResult && item.arrShow[jdx] === item.arr[jdx] && item.shadowArr[jdx] === null
+                  ? '!bg-green-300 text-green-600 border border-green-600'
+                  : '',
+                isCheckResult && item.arrShow[jdx] !== item.arr[jdx] && item.shadowArr[jdx] === null
+                  ? '!bg-red-300 text-red-600 border border-red-600'
+                  : '',
+                item.shadowArr[jdx] !== null ? '!bg-blue-100' : ''
+              ]"
+            />
+            </div>
+          </div>
+        
       </div>
     </div>
   </div>

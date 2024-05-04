@@ -7,7 +7,7 @@
       <div v-for="(item, idx) in dataSet" :key="idx" class="mt-6 text-gray-700">
           <div class="flex items-center space-x-8">
             <div v-for="(jtem, jdx) in item.arrShow" :key="jdx">
-              <span v-if="item.arrShow[jdx]" class="flex items-center justify-center w-8 h-8 border border-blue-300 bg-blue-100">{{ item.arrShow[jdx] }}</span>
+              <span v-if="item.shadowArr[jdx]" class="flex items-center justify-center w-8 h-8 border border-blue-300 bg-blue-100">{{ item.arrShow[jdx] }}</span>
               <input
               v-else
               type="number"
@@ -103,6 +103,7 @@ export default {
         })
 
         const shadowArr = [...arrShow]
+
 
         return {
           arr,

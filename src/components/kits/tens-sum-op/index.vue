@@ -31,6 +31,7 @@
         <input
           v-model="bindNull[idx]"
           type="number"
+          :disabled="isCheckResult"
           class="px-2 w-9 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none border border-blue-300 mt-1 outline-none"
           :class="[
             isCheckResult && resultSet[idx] === bindNull[idx]

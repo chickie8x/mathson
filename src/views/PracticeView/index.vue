@@ -38,8 +38,13 @@
       <div class="flex items-end space-x-4">
         <div>
           <span class="block font-semibold text-sm mb-2">Chọn độ khó</span>
-          <select name="sld" id="sld" v-model="selectOpDiff" class="px-2 py-1 text-sm outline-none border border-gray-200 rounded-md">
-            <option v-for="item, idx in sl" :key="idx" :value="item">{{ item.text }}</option>
+          <select
+            name="sld"
+            id="sld"
+            v-model="selectOpDiff"
+            class="px-2 py-1 text-sm outline-none border border-gray-200 rounded-md"
+          >
+            <option v-for="(item, idx) in sl" :key="idx" :value="item">{{ item.text }}</option>
           </select>
         </div>
         <button
@@ -89,7 +94,7 @@ export default {
         id: 0,
         text: 'Khó',
         value: 'hard'
-      },
+      }
     ]
     const selectOpDiff = ref(sl[0])
     const loadComponents = () => {
@@ -119,7 +124,10 @@ export default {
     })
 
     const goToPractice = () => {
-      router.push({ name: 'choices', params: { choices: paramPassed.value, param: selectOpDiff.value.value } })
+      router.push({
+        name: 'choices',
+        params: { choices: paramPassed.value, param: selectOpDiff.value.value }
+      })
     }
 
     onMounted(() => {

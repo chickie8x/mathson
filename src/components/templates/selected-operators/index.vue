@@ -11,7 +11,9 @@
         <component :is="item" />
       </div>
       <div class="w-[1152px] p-4 flex justify-center">
-        <button @click="trigger" class="px-4 py-1 bg-blue-500 text-white rounded-md">Hoàn thành</button>
+        <button @click="trigger" class="px-4 py-1 bg-blue-500 text-white rounded-md">
+          Hoàn thành
+        </button>
       </div>
     </div>
   </div>
@@ -21,7 +23,6 @@
 import { useRoute } from 'vue-router'
 import { onMounted, ref, provide, shallowRef } from 'vue'
 import LoadingIcon from '@/assets/icons/loading.vue'
-
 
 export default {
   name: 'SelectedOperator',

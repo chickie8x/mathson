@@ -1,7 +1,5 @@
 <template>
-  <div
-    class="relative w-full h-screen bg-blue-50 overflow-auto"
-  >
+  <div class="relative w-full h-screen bg-blue-50 overflow-auto">
     <NavBar />
     <router-view v-slot="{ Component }">
       <transition name="fade">
@@ -29,7 +27,7 @@ export default {
     const route = useRoute()
 
     return {
-      route,
+      route
     }
   }
 }

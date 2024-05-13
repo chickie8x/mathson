@@ -1,13 +1,13 @@
 <template>
-  <div class="h-[calc(100%-64px)] flex justify-center">
-    <div v-if="isLoadingComponent" class="flex items-center">
+  <div class="w-full h-[calc(100%-64px)] flex justify-center">
+    <div v-if="isLoadingComponent" class="flex items-center justify-center h-full">
       <div class="bg-indigo-500 rounded-md px-4 py-2 flex items-center text-white">
         <LoadingIcon />
         <span>Đang xử lý...</span>
       </div>
     </div>
 
-    <div v-else v-once class="max-w-6xl">
+    <div v-else v-once class="w-[1152px]">
       <div v-for="(item, idx) in exercisesList.sort()" :key="idx">
         <component :is="item" />
       </div>

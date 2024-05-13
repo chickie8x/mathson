@@ -1,6 +1,6 @@
 <template>
   <div
-    class="relative w-full min-h-screen bg-blue-50"
+    class="relative w-full h-screen bg-blue-50 overflow-auto"
   >
     <NavBar />
     <router-view v-slot="{ Component }">

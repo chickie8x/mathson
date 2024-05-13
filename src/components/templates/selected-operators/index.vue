@@ -6,7 +6,7 @@
         <span>Đang xử lý....</span>
       </div>
     </div>
-    <div v-else class="w-[1152px]">
+    <div v-else class="w-[1152px] h-full">
       <div v-for="(item, idx) in comps" :key="idx">
         <component :is="item" />
       </div>
@@ -18,12 +18,17 @@
 </template>
 
 <script>
-import componentNames from '@/components/kits'
 import { useRoute } from 'vue-router'
 import { onMounted, ref, provide, shallowRef } from 'vue'
+import LoadingIcon from '@/assets/icons/loading.vue'
+
 
 export default {
   name: 'SelectedOperator',
+
+  components: {
+    LoadingIcon
+  },
 
   setup() {
     const isLoading = ref(true)

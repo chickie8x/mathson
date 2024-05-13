@@ -35,13 +35,19 @@
           <span class="mt-4">{{ item.desc.detail }}</span>
         </div>
       </div>
-      <div>
+      <div class="flex items-end space-x-4">
+        <div>
+          <span class="block font-semibold text-sm mb-2">Chọn độ khó</span>
+          <select name="sld" id="sld" v-model="selectOpDiff" class="px-2 py-1 text-sm outline-none border border-gray-200 rounded-md">
+            <option v-for="item, idx in sl" :key="idx" :value="item">{{ item.text }}</option>
+          </select>
+        </div>
         <button
           @click="goToPractice"
           :disabled="paramPassed === ''"
           class="border-none, px-4 py-1 bg-blue-500 text-white rounded-md disabled:bg-gray-300 disabled:text-gray-600"
         >
-          GO
+          Bắt đầu
         </button>
       </div>
     </div>
@@ -66,6 +72,26 @@ export default {
     const router = useRouter()
     const exercisesList = ref([])
     const asyncList = ref([])
+    const sl = [
+      {
+        id: 0,
+        text: 'Dễ',
+        value: 'easy'
+      },
+
+      {
+        id: 1,
+        text: 'Trung bình',
+        value: 'medium'
+      },
+
+      {
+        id: 0,
+        text: 'Khó',
+        value: 'hard'
+      },
+    ]
+    const selectOpDiff = ref(sl[0])
     const loadComponents = () => {
       Promise.all(
         componentNames.map(async (item) => {
@@ -93,7 +119,7 @@ export default {
     })
 
     const goToPractice = () => {
-      router.push({ name: 'choices', params: { choices: paramPassed.value, param: 'easy' } })
+      router.push({ name: 'choices', params: { choices: paramPassed.value, param: selectOpDiff.value.value } })
     }
 
     onMounted(() => {
@@ -106,7 +132,9 @@ export default {
       selectedExerciseInit,
       selectedExercise,
       paramPassed,
-      goToPractice
+      goToPractice,
+      sl,
+      selectOpDiff
     }
   }
 }

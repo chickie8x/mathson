@@ -3,7 +3,7 @@
     <div v-if="isLoadingComponent" class="flex items-center">
       <div class="bg-indigo-500 rounded-md px-4 py-2 flex items-center text-white">
         <LoadingIcon />
-        <span>Processing...</span>
+        <span>Đang xử lý...</span>
       </div>
     </div>
 

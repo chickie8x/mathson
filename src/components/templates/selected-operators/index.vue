@@ -1,14 +1,18 @@
 <template>
-  <div class="w-full flex items-center flex-col">
-    <div v-if="isLoading">loading....</div>
+  <div class="w-full h-[calc(100%-64px)] flex items-center flex-col overflow-auto">
+    <div v-if="isLoading" class="flex items-center h-full">
+      <div class="bg-indigo-500 rounded-md px-4 py-2 flex items-center text-white">
+        <LoadingIcon />
+        <span>Đang xử lý....</span>
+      </div>
+    </div>
     <div v-else class="w-[1152px]">
       <div v-for="(item, idx) in comps" :key="idx">
         <component :is="item" />
       </div>
-    </div>
-
-    <div class="w-[1152px] mt-8 p-4">
-      <button @click="trigger" class="px-4 py-1 bg-blue-500 text-white rounded-md">CHECK</button>
+      <div class="w-[1152px] p-4 flex justify-center">
+        <button @click="trigger" class="px-4 py-1 bg-blue-500 text-white rounded-md">Hoàn thành</button>
+      </div>
     </div>
   </div>
 </template>

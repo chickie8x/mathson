@@ -20,7 +20,7 @@
 
 <script>
 import { onMounted, provide, ref, shallowRef } from 'vue'
-import LoadingIcon from '@/assets/icons/loading.vue'
+import LoadingIcon from '@/assets/loading.vue'
 import componentNames from '@/components/kits/'
 import { shuffleArray } from '@/data'
 

@@ -22,7 +22,7 @@
 <script>
 import { useRoute } from 'vue-router'
 import { onMounted, ref, provide, shallowRef } from 'vue'
-import LoadingIcon from '@/assets/icons/loading.vue'
+import LoadingIcon from '@/assets/loading.vue'
 
 export default {
   name: 'SelectedOperator',

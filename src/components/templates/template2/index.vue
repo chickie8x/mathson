@@ -9,7 +9,7 @@
         <div class="flex items-center justify-center space-x-4">
           <button @click="moveBack">
             <img
-              src="/src/assets/icons/nextbtn.svg"
+              :src="nxtBtn"
               alt=""
               class="w-24 h-24 scale-[-1] opacity-60"
             />
@@ -53,7 +53,7 @@
             </div>
           </div>
           <button @click="moveNext">
-            <img src="/src/assets/icons/nextbtn.svg" alt="" class="w-24 h-24 opacity-60" />
+            <img :src="nxtBtn" alt="" class="w-24 h-24 opacity-60" />
           </button>
         </div>
       </div>
@@ -68,6 +68,7 @@ import { Vue3Lottie } from 'vue3-lottie'
 import speaker from '@/assets/lottiefiles/speaker.json'
 import { language } from '@/data'
 import { useRoute } from 'vue-router'
+import nxtBtn from '/icons/nextbtn.svg'
 
 export default {
   name: 'AnimalFlashCard',
@@ -128,7 +129,8 @@ export default {
       language,
       doPlaySound,
       flashcards,
-      cardType
+      cardType,
+      nxtBtn
     }
   }
 }

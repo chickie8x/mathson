@@ -148,14 +148,14 @@ export const language = [
   {
     id: 1,
     text: 'Tiếng Việt',
-    icon: '/src/assets/icons/VN.svg',
+    icon: '/icons/VN.svg',
     value: 'vie'
   },
 
   {
     id: 2,
     text: 'English',
-    icon: '/src/assets/icons/UK.webp',
+    icon: '/icons/UK.webp',
     value: 'eng'
   }
 ]

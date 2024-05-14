@@ -10,8 +10,7 @@
 </template>
 
 <script>
-import ModalExercise from '@/components/modal/template1/index.vue'
-import AnimalsFlashCard from '@/components/modal/template2/index.vue'
+import AnimalsFlashCard from '@/components/templates/template2/index.vue'
 import NavBar from '@/components/navbar/index.vue'
 import { useRoute } from 'vue-router'
 
@@ -19,7 +18,6 @@ export default {
   name: 'App',
 
   components: {
-    ModalExercise,
     AnimalsFlashCard,
     NavBar
   },

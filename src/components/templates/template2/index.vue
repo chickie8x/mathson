@@ -8,11 +8,7 @@
       <div>
         <div class="flex items-center justify-center space-x-4">
           <button @click="moveBack">
-            <img
-              :src="nxtBtn"
-              alt=""
-              class="w-24 h-24 scale-[-1] opacity-60"
-            />
+            <img :src="nxtBtn" alt="" class="w-24 h-24 scale-[-1] opacity-60" />
           </button>
           <div
             class="flex flex-col justify-center items-center rounded-md p-4 bg-white bg-opacity-60 backdrop-blur-md shadow-md select-none"

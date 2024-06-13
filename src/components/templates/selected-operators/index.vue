@@ -21,7 +21,7 @@
 
 <script>
 import { useRoute } from 'vue-router'
-import { onMounted, ref, provide, shallowRef } from 'vue'
+import { onMounted, ref, provide, shallowRef, handleError, onBeforeUnmount } from 'vue'
 import LoadingIcon from '@/assets/loading.vue'
 
 export default {
@@ -58,8 +58,18 @@ export default {
       )
     }
 
+    const handleBeforeUnload = (event) => {
+      event.preventDefault()
+      event.returnValue = ''
+    }
+
     onMounted(() => {
       loadComponents()
+      window.addEventListener('beforeunload', handleBeforeUnload)
+    })
+
+    onBeforeUnmount(() => {
+      window.removeEventListener('beforeunload', handleBeforeUnload)
     })
 
     setTimeout(() => {

@@ -334,3 +334,77 @@ export const tenSubOpGen = (n, conf) => {
 
   return ret
 }
+
+export const genMixedData = (n, conf) => {
+  let ret = []
+  if (conf === 'easy') {
+    while (ret.length <= n) {
+      let obj = {}
+      let num1 = Math.floor(Math.random() * 99)
+      let num2 = Math.floor(Math.random() * 99)
+      if (num1 + num2 <= 20) {
+        if (num1 > num2) {
+          obj.leftExp = [num1, null]
+          obj.rightExp = num2
+          obj.result = num1 - num2
+          obj.operator = '-'
+        } else {
+          obj.leftExp = [num1, null]
+          obj.rightExp = num2
+          obj.result = num2 - num1
+          obj.operator = '+'
+        }
+        if (obj.result <= 100 && obj.leftExp[0]) {
+          ret.push(obj)
+        }
+      }
+    }
+  } else if (conf === 'medium') {
+    while (ret.length <= n) {
+      let obj = {}
+      let num1 = Math.floor(Math.random() * 99)
+      let num2 = Math.floor(Math.random() * 99)
+      if (num1 > num2) {
+        obj.leftExp = [num1, null]
+        obj.rightExp = num2
+        obj.result = num1 - num2
+        obj.operator = '-'
+      } else {
+        obj.leftExp = [num1, null]
+        obj.rightExp = num2
+        obj.result = num2-num1
+        obj.operator = '+'
+      }
+      if (obj.result <= 100 && obj.leftExp[0]) {
+        if (obj.operator === '+' && (obj.leftExp[0] % 10) + (obj.result % 10) < 10) {
+          ret.push(obj)
+        } else if (obj.operator === '-' && obj.leftExp[0] % 10 >= obj.rightExp % 10) {
+          ret.push(obj)
+        }
+      }
+    }
+  } else {
+    while (ret.length <= n) {
+      let obj = {}
+      let num1 = Math.floor(Math.random() * 99)
+      let num2 = Math.floor(Math.random() * 99)
+      if (num1 > num2) {
+        obj.leftExp = [num1, null]
+        obj.rightExp = num2
+        obj.result = num1 - num2
+        obj.operator = '-'
+      } else {
+        obj.leftExp = [num1, null]
+        obj.rightExp = num2
+        obj.result = num2 - num1
+        obj.operator = '+'
+      }
+
+      if (num1 + num2 < 100) {
+        ret.push(obj)
+      }
+    }
+  }
+
+  return ret
+}

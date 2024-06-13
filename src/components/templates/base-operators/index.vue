@@ -12,7 +12,9 @@
         <component :is="item" />
       </div>
       <div class="w-full mt-8 p-4 flex justify-center">
-        <button @click="trigger" class="px-4 py-1 bg-blue-500 text-white rounded-md">Hoàn thành</button>
+        <button @click="trigger" class="px-4 py-1 bg-blue-500 text-white rounded-md">
+          Hoàn thành
+        </button>
       </div>
     </div>
   </div>

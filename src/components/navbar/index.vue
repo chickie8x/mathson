@@ -39,6 +39,7 @@
           </div>
         </div>
         <div
+          v-if="user"
           class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0"
         >
           <button
@@ -58,11 +59,8 @@
               >
                 <span class="absolute -inset-1.5" />
                 <span class="sr-only">Open user menu</span>
-                <img
-                  class="h-8 w-8 rounded-full"
-                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                  alt=""
-                />
+                <img class="h-6 w-6 rounded-full opacity-70" src="/icons/user.svg" alt="" />
+                <span class="ml-1 text-indigo-600">{{ user.email }}</span>
               </MenuButton>
             </div>
             <transition
@@ -91,15 +89,21 @@
                   >
                 </MenuItem>
                 <MenuItem v-slot="{ active }">
-                  <a
-                    href="#"
+                  <button
+                    @click="logout"
                     :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']"
-                    >Sign out</a
+                    class="w-full text-left"
                   >
+                    Sign out
+                  </button>
                 </MenuItem>
               </MenuItems>
             </transition>
           </Menu>
+        </div>
+
+        <div v-else class="flex items-center space-x-2 text-gray-500 font-medium">
+          <router-link to="/auth" class="hover:underline text-gray-600">Login/Register</router-link>
         </div>
       </div>
     </div>
@@ -138,7 +142,10 @@ import {
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/vue/24/outline'
 import { navbar } from './navbar'
 import { computed, ref } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
+import { user } from '@/firebase'
+import { signOut } from 'firebase/auth'
+import { auth } from '@/firebase'
 
 export default {
   name: 'NavBar',
@@ -157,13 +164,26 @@ export default {
 
   setup() {
     const route = useRoute()
+    const router = useRouter()
     const currPath = computed(() => {
       return route.path
     })
 
+    const logout = () => {
+      signOut(auth)
+        .then(() => {
+          router.push('/')
+        })
+        .catch((err) => {
+          alert(err.message)
+        })
+    }
+
     return {
       navbar,
-      currPath
+      currPath,
+      user,
+      logout
     }
   }
 }

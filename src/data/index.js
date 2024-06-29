@@ -372,7 +372,7 @@ export const genMixedData = (n, conf) => {
       } else {
         obj.leftExp = [num1, null]
         obj.rightExp = num2
-        obj.result = num2-num1
+        obj.result = num2 - num1
         obj.operator = '+'
       }
       if (obj.result <= 100 && obj.leftExp[0]) {

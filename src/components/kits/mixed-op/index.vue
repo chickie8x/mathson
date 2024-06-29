@@ -19,6 +19,7 @@
             <input
               v-else
               v-model="shadowResult[idx]"
+              :disabled="isCheckResult" 
               type="number"
               class="w-12 border border-blue-300 rounded-sm outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none px-1 hover:bg-blue-50 focus:border-2 focus:border-blue-500"
               dir="rtl"

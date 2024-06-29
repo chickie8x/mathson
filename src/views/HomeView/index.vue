@@ -82,11 +82,12 @@
           <button
             class="mt-4 rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
           >
-            Đăng ký tài khoản
+            Đăng ký ngay
           </button>
         </div>
       </div>
     </div>
+    <Toaster position="top-center" richColors/>
   </div>
 </template>
 
@@ -95,12 +96,16 @@ import { useRouter, useRoute } from 'vue-router'
 import { Vue3Lottie } from 'vue3-lottie'
 import homeSection1 from '@/assets/lottiefiles/default.json'
 import homeSection2 from '@/assets/lottiefiles/chart.json'
+import { computed, onMounted } from 'vue'
+import { Toaster, toast } from 'vue-sonner'
+
 
 export default {
   name: 'HomeView',
 
   components: {
-    Vue3Lottie
+    Vue3Lottie,
+    Toaster,
   },
 
   setup() {
@@ -120,10 +125,25 @@ export default {
       router.push('/practice')
     }
 
+    const meta = computed(() => route.meta.authMessage)
+    const authToast = () => {
+      if(meta.value){
+        toast.success('Đăng nhập thành công', {
+          style:{
+            marginTop: '40px'
+          }
+        })
+      }
+    }
+
+    onMounted(() => {
+      authToast()
+    })
+
     return {
       goToLesson,
       homeSection1,
-      homeSection2
+      homeSection2,
     }
   }
 }

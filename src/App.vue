@@ -19,7 +19,7 @@ export default {
 
   components: {
     AnimalsFlashCard,
-    NavBar
+    NavBar,
   },
   setup() {
     const route = useRoute()

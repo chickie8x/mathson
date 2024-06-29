@@ -130,7 +130,10 @@ export default {
       if(meta.value){
         toast.success('Đăng nhập thành công', {
           style:{
-            marginTop: '40px'
+            marginTop: '40px',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center'
           }
         })
       }

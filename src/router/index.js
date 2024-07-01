@@ -13,7 +13,8 @@ const router = createRouter({
       component: HomeView,
       meta: {
         transition: 'fade',
-        authMessage: false
+        loginMessage: false,
+        logoutMessage: false,
       }
     },
     {
@@ -93,13 +94,12 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   if (user.value && to.path === '/' && from.path === '/auth') {
-    to.meta.authMessage = true
+    to.meta.loginMessage = true
   }
   else{
-    to.meta.authMessage = false
+    to.meta.loginMessage = false
   }
   next()
-
 })
 
 export default router

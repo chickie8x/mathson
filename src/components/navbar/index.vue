@@ -146,6 +146,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { user } from '@/firebase'
 import { signOut } from 'firebase/auth'
 import { auth } from '@/firebase'
+import appRouter from '@/router'
 
 export default {
   name: 'NavBar',
@@ -169,9 +170,13 @@ export default {
       return route.path
     })
 
+    const homeRoute = appRouter.getRoutes().find(item => item.name === 'home')
+
+
     const logout = () => {
       signOut(auth)
         .then(() => {
+          homeRoute.meta.logoutMessage = true
           router.push('/')
         })
         .catch((err) => {

@@ -98,6 +98,8 @@ import homeSection1 from '@/assets/lottiefiles/default.json'
 import homeSection2 from '@/assets/lottiefiles/chart.json'
 import { computed, onMounted } from 'vue'
 import { Toaster, toast } from 'vue-sonner'
+import appRouter from '@/router'
+
 
 
 export default {
@@ -125,9 +127,12 @@ export default {
       router.push('/practice')
     }
 
-    const meta = computed(() => route.meta.authMessage)
+    const metaLogin = computed(() => route.meta.loginMessage)
+    const metaLogout = computed(() => route.meta.logoutMessage)
+    const homeRoute = appRouter.getRoutes().find(item => item.name === 'home')
+
     const authToast = () => {
-      if(meta.value){
+      if(metaLogin.value){
         toast.success('Đăng nhập thành công', {
           style:{
             marginTop: '40px',
@@ -136,6 +141,19 @@ export default {
             alignItems: 'center'
           }
         })
+      }
+      else if(metaLogout.value){
+        toast.error('Đã đăng xuất', {
+          style:{
+            marginTop: '40px',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center'
+          }
+        })
+
+        homeRoute.meta.logoutMessage = false
+
       }
     }
 

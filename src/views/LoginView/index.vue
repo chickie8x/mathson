@@ -124,7 +124,7 @@ export default {
     Toaster
   },
 
-  setup() {
+  setup(_, {emit}) {
     const router = useRouter()
     const isLogin = ref(true)
 
@@ -147,6 +147,7 @@ export default {
       signInWithEmailAndPassword(auth, username.value, password.value)
         .then((user) => {
           router.push('/')
+          emit('noticeLogin')
         })
         .catch((err) => {
           toast.error('Lỗi đăng nhập, kiểm tra lại email và mật khẩu')

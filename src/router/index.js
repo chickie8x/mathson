@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView/index.vue'
 import PracticeView from '../views/PracticeView/index.vue'
-import { user } from '@/firebase'
+import { getAuth, onAuthStateChanged } from 'firebase/auth'
+
 
 
 const router = createRouter({
@@ -13,8 +14,6 @@ const router = createRouter({
       component: HomeView,
       meta: {
         transition: 'fade',
-        loginMessage: false,
-        logoutMessage: false,
       }
     },
     {
@@ -91,15 +90,23 @@ const router = createRouter({
   ]
 })
 
-
 router.beforeEach((to, from, next) => {
-  if (user.value && to.path === '/' && from.path === '/auth') {
-    to.meta.loginMessage = true
+  if(to.path==='/auth'){
+    const auth = getAuth()
+    onAuthStateChanged(auth, (user) => {
+      if(user){
+        router.push('/')
+      }
+      else{
+        next()
+      }
+
+    })
   }
   else{
-    to.meta.loginMessage = false
+    next()
   }
-  next()
 })
+
 
 export default router

@@ -87,7 +87,6 @@
         </div>
       </div>
     </div>
-    <Toaster position="top-center" richColors/>
   </div>
 </template>
 
@@ -96,9 +95,6 @@ import { useRouter, useRoute } from 'vue-router'
 import { Vue3Lottie } from 'vue3-lottie'
 import homeSection1 from '@/assets/lottiefiles/default.json'
 import homeSection2 from '@/assets/lottiefiles/chart.json'
-import { computed, onMounted } from 'vue'
-import { Toaster, toast } from 'vue-sonner'
-import appRouter from '@/router'
 
 
 
@@ -107,7 +103,6 @@ export default {
 
   components: {
     Vue3Lottie,
-    Toaster,
   },
 
   setup() {
@@ -126,40 +121,6 @@ export default {
       route.params.config = config
       router.push('/practice')
     }
-
-    const metaLogin = computed(() => route.meta.loginMessage)
-    const metaLogout = computed(() => route.meta.logoutMessage)
-    const homeRoute = appRouter.getRoutes().find(item => item.name === 'home')
-
-    const authToast = () => {
-      if(metaLogin.value){
-        toast.success('Đăng nhập thành công', {
-          style:{
-            marginTop: '40px',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center'
-          }
-        })
-      }
-      else if(metaLogout.value){
-        toast.error('Đã đăng xuất', {
-          style:{
-            marginTop: '40px',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center'
-          }
-        })
-
-        homeRoute.meta.logoutMessage = false
-
-      }
-    }
-
-    onMounted(() => {
-      authToast()
-    })
 
     return {
       goToLesson,
